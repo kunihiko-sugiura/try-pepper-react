@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["latest", {
+      "es2017": false
+    }]
+  ],
+  "plugins": [
+  	"transform-inline-environment-variables",
+  	"transform-react-jsx"
+  ]
+}

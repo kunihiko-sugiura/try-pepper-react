@@ -1,0 +1,35 @@
+{
+  "name": "try-pepper-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app:dev": "node fusebox --variant dev",
+    "app:prod": "node fusebox --variant prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunihiko-sugiura/try-pepper-react"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunihiko-sugiura/try-pepper-react/issues"
+  },
+  "homepage": "https://github.com/kunihiko-sugiura/try-pepper-react#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-inline-environment-variables": "^0.1.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "fuse-box": "^2.2.2",
+    "node-sass": "^4.5.3",
+    "postcss-modules": "^0.8.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "typescript": "^2.4.2",
+    "uglify-js": "^3.0.28",
+    "yargs": "^8.0.2"
+  }
+}

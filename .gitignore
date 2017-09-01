@@ -66,3 +66,10 @@ typings/
 # jetbrain
 # --------------------
 .idea
+
+# ** App
+html/*
+!html/lib
+!html/libs
+
+!.gitkeep

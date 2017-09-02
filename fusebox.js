@@ -1,9 +1,9 @@
 const {
 	FuseBox,
-    SVGPlugin,
-    CSSPlugin,
-    CSSModules,
-    SassPlugin,
+    // SVGPlugin,
+    // CSSPlugin,
+    // CSSModules,
+    // SassPlugin,
     BabelPlugin,
     QuantumPlugin,
     WebIndexPlugin,
@@ -13,28 +13,25 @@ const {
     */
     Sparky
 } = require('fuse-box');
-
 const argv = require('yargs').argv;
-
 const isProduction = argv.variant === 'prod';
 
-const fuse = FuseBox.init({
+process.env.NODE_ENV = isProduction ?  'production' : 'development';
+
+const fuse = new FuseBox({
 	homeDir: 'src/js',
 	output: 'html/$name.js',
-    // sourceMaps: ! isProduction,
-    sourceMaps: false,
-	cache: ! isProduction,
+    // sourceMaps: false,
+	// cache: ! isProduction,
 	plugins: [
-	    SVGPlugin(),
-	    // CSSPlugin(),
+	    // SVGPlugin(),
 	    BabelPlugin(),
-        // [SassPlugin(), CSSModules({ outputStyle: 'compressed' }), CSSPlugin()],
+        // [ ".scss", SassPlugin({ outputStyle: 'compressed' }), CSSModules(), CSSPlugin()],
 
         // [SassPlugin({ outputStyle: 'compressed' }), CSSPlugin({
         //     group: "bundle.css",
         //     outFile: './html/css/bundle.css'
         // })],
-
 
         // [SassPlugin({ outputStyle: 'compressed' }), CSSPlugin({
         //     group: "bundle.css",
@@ -43,31 +40,32 @@ const fuse = FuseBox.init({
 	    WebIndexPlugin({
 	    	template: './src/index.html'
 	    }),
-	    isProduction && QuantumPlugin({
-	        removeExportsInterop: false,
-	        uglify: true
-	    })
+        // isProduction && QuantumPlugin({
+	    //     removeExportsInterop: false,
+	    //     uglify: true
+	    // })
 	]
 });
 
-
-const app = fuse.bundle('app')
+const app = fuse
+    .bundle('app')
+    .target("browser")
     .shim({
         jquery: {
-            source: 	"html/lib/jquery/jquery.min.js",
+            source: 	"src/lib/jquery/jquery.min.js",
             exports: 	"jQuery"
         },
-        qisession: {
-            source: 	"html/libs/qimessaging/2/qimessaging.js",
-            exports: 	"QiSession"
-        }
+        // qisession: {
+        //     source: 	"src/libs/qimessaging/2/qimessaging.js",
+        //     exports: 	"QiSession"
+        // }
     })
-    .instructions(`>index.js`);
+    .instructions(`>app.js`);
 
-(! isProduction) && app.watch().hmr();
+fuse.dev({
+    open : true,
+});
 
-// ** Dev Server
-fuse.dev();
+( ! isProduction ) && app.watch().hmr();
 
 fuse.run();
-

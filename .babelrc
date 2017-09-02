@@ -1,7 +1,9 @@
 {
   "presets": [
-    ["latest", {
-      "es2017": false
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      }
     }]
   ],
   "plugins": [

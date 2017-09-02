@@ -18,18 +18,21 @@
   },
   "homepage": "https://github.com/kunihiko-sugiura/try-pepper-react#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "babel-core": "^6.20.0",
     "babel-plugin-transform-inline-environment-variables": "^0.1.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-es2017": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
-    "fuse-box": "^2.2.2",
-    "node-sass": "^4.5.3",
-    "postcss-modules": "^0.8.0",
+    "babel-preset-env": "^1.6.0",
+    "fuse-box": "^2.2.0",
+    "redux-devtools": "^3.4.0",
+    "redux-logger": "^3.0.6",
+    "typescript": "^2.1.4",
+    "uglify-js": "^3.0.15",
+    "yargs": "^8.0.2"
+  },
+  "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "typescript": "^2.4.2",
-    "uglify-js": "^3.0.28",
-    "yargs": "^8.0.2"
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   }
 }

@@ -1,21 +1,37 @@
+// ** Pepper Session
+import PepperSession from "../../libs/PepperSession";
+
 // *************************
 // ** Action Types
 // *************************
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
+const actionCategory = 'counter';
+const actionTypes = {
+    INCREMENT: actionCategory + '/INCREMENT',
+    DECREMENT: actionCategory + '/DECREMENT'
+};
 
 // *************************
 // ** Action Creators
 // *************************
 export function incrementNumber(value){
     return {
-        type: INCREMENT,
+        type: actionTypes.INCREMENT,
         value
     }
 }
+export function incrementNumberAsync(value) {
+    return (dispatch, getState) => {
+        setTimeout( () => {
+            dispatch(incrementNumber(value));
+
+            PepperSession.sendLog2PepperObject( ["メッセージ","送るよ"] );
+        }, 1000);
+    };
+}
+
 export function decrementNumber(value){
     return {
-        type: DECREMENT,
+        type: actionTypes.DECREMENT,
         value
     }
 }
@@ -32,7 +48,7 @@ const initialState = {
 // *************************
 export default function reducer(state = initialState, action){
     switch (action.type){
-        case INCREMENT:
+        case actionTypes.INCREMENT:
             return Object.assign(
                 {},
                 state,
@@ -40,7 +56,7 @@ export default function reducer(state = initialState, action){
                     value: state.value + action.value
                 }
             );
-        case DECREMENT:
+        case actionTypes.DECREMENT:
             return Object.assign(
                 {},
                 state,

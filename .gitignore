@@ -69,8 +69,6 @@ typings/
 .idea
 
 # ** App
-html/*
-!html/lib
-!html/libs
-
+pepper/html/**
+!pepper/html/libs/qimessaging/2/qimessaging.js
 !.gitkeep
